@@ -1,0 +1,1 @@
+from .pelicula_admin import *

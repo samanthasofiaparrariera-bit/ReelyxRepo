@@ -1,0 +1,1 @@
+from .pelicula_model import *

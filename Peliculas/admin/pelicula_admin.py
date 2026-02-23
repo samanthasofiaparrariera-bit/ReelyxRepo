@@ -1,0 +1,12 @@
+from django.contrib import admin
+from ..models.pelicula_model import Pelicula
+
+class PeliculaAdmin(admin.ModelAdmin):
+    list_display = ('name', 'year', 'genre','rating','duration')
+    list_filter = ('genre','year','rating','duration')
+    search_fields = ('name',)
+    readonly_fields = ('slug','rating','duration','genre','year')
+    list_per_page = 50
+
+
+admin.site.register(Pelicula, PeliculaAdmin)

@@ -28,8 +28,9 @@ admin.site.index_title = "App Películas"
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('api/', include('Users.urls')),
-    path('api/', include('Peliculas.urls')),
+    path('api/users', include('Users.urls')),
+    path('api/peliculas', include('Peliculas.urls')),
+    path('api/listas', include('Listas.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

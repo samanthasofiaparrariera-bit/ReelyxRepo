@@ -8,16 +8,24 @@ from ..model.listas_model import Lista
 class ListasView(APIView):
     permission_classes = [AllowAny]
 
+
+
     def get(self, request):
-        lists = Lista.objects.filter(is_active=True).order_by('id', '-name')
+        #dejo un is_active en caso de que alguien quiera archivar o eliminar una lista
+        listas = Lista.objects.filter(is_active=True).order_by('id')
+        data = [
+            {
+                "nombre": lista.nombre,
+                "usuario": lista.usuario,
+                "descripcion": lista.descripcion,
+                "creado": lista.creado,
+                "actualizado": lista.actualizado,
+                "slug_lista": lista.slug,
+                "cant_peliculas": lista.peliculas(lista),
 
-        data = [{
-            "nombre": lists.name,
-            "usuario": lists.usuario,
-            "descripcion": lists.descripcion,
-            "creado": lists.creado,
-            "actualizado": lists.actualizado,
-            "slug_lista": lists.slug_lista,
+            }
+            for lista in listas
+        ]
 
-        }]
+        return Response({"success": True, "data": data}, status=status.HTTP_200_OK)
 

@@ -1,6 +1,9 @@
 from django.urls import path
-from rest_framework import views
+from .views.pelicula_view import PeliculaView
+
 
 urlpatterns = [
-    # path('lista/', views.a, name='a'), no entiendo
+    # path('lista/', views.a, name='a'),
+    path("", PeliculaView.as_view(), name = "Peliculas"),
+
 ]

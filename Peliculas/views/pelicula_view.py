@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ..models.pelicula_model import Pelicula
+from ..model.pelicula_model import Pelicula
 
 class PeliculaView(APIView):
     permission_classes = [AllowAny]

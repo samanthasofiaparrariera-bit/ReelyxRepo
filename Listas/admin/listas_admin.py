@@ -6,4 +6,9 @@ class ListaAdmin(admin.ModelAdmin):
     list_display = ("nombre","usuario","creado")
     search_fields = ("nombre","usuario","creado")
 
-    admin.site.register(Lista)
+
+    class ListaAdmin(admin.ModelAdmin):
+        list_display = ("nombre","usuario","creado")
+        search_fields = ("nombre","usuario")
+
+admin.site.register(Lista)

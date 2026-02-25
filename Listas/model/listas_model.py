@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from rest_framework.authtoken.admin import User
 from django.core.exceptions import ValidationError
-from ...Users.models.users_models import CustomUser
 
 
 #id, nombre, userid,conectar lista id con peli id
@@ -11,7 +9,11 @@ from ...Users.models.users_models import CustomUser
 
 class Lista(models.Model):
     # FK con usuario.
-    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Usuario')
+    # Pongo Peliculas.Pelicula para ver si con la ruta funciona
+    usuario = models.ForeignKey("Users.CustomUser", on_delete=models.CASCADE, verbose_name='Usuario')
+    peliculas = models.ManyToManyField("Peliculas.Pelicula", blank=True)
+
+
     slug = models.SlugField(max_length=100, unique=True, blank=True)
 
     nombre = models.CharField(max_length=100, verbose_name='Nombre de la lista')
@@ -45,3 +47,6 @@ class Lista(models.Model):
             if lista and lista.id != self.id:
                 raise ValidationError({"nombre": ["Ya existe una lista con este nombre"], })
         super().save(*args, **kwargs)
+
+    def numPelis(self):
+        return self.peliculas.count()

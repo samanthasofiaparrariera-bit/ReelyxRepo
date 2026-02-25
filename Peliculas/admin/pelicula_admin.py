@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ..models.pelicula_model import Pelicula
+from ..model.pelicula_model import Pelicula
 
 class PeliculaAdmin(admin.ModelAdmin):
     list_display = ('name', 'year', 'genre','rating','duration')

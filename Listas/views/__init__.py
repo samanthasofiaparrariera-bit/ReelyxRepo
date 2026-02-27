@@ -1,1 +1,1 @@
-from listas_view import *
+from .listas_view import ListasView

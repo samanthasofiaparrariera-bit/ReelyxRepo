@@ -5,7 +5,7 @@ class PeliculaAdmin(admin.ModelAdmin):
     list_display = ('name', 'year', 'genre','rating','duration')
     list_filter = ('genre','year','rating','duration')
     search_fields = ('name',)
-    readonly_fields = ('slug','rating','duration','genre','year')
+    readonly_fields = ('slug',)
     list_per_page = 50
 
 

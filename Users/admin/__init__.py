@@ -1,2 +1,2 @@
-from .users_admin import *
-from .info_admin import *
+from .users_admin import CustomUserAdmin
+from .info_admin import InfoPersonalAdmin

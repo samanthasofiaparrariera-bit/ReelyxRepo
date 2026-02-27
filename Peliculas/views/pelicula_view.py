@@ -5,13 +5,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from ..model.pelicula_model import Pelicula
+from Peliculas.serializers import PeliculaSerializer
 
 class PeliculaView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
         peliculas = Pelicula.objects.all()
-
+        serializer = PeliculaSerializer(peliculas, many=True)
         data = [{
             "name": pelicula.name,
             "year" : pelicula.year,

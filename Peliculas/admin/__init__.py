@@ -1,1 +1,1 @@
-from .pelicula_admin import *
+from .pelicula_admin import PeliculaAdmin
